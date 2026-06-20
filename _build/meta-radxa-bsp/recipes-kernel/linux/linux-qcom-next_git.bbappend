@@ -1,3 +1,5 @@
+# ref: https://github.com/qualcomm-linux/meta-qcom/blob/master/recipes-kernel/linux/linux-qcom-next_git.bb
+
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 LINUX_VERSION ?= "7.0+7.1-rc7"

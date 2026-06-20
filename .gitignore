@@ -1,2 +1,14 @@
-/_build/lib
-/_build/vmlinuz
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.kate-swp
+
+/_build/bitbake
+/_build/build
+/_build/meta-*
+!/_build/meta-radxa-bsp
+/_build/oe-core
