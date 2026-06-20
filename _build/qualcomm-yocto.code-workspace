@@ -1,0 +1,162 @@
+{
+    "folders": [
+        {
+            "name": "Root",
+            "path": "."
+        },
+        {
+            "name": "Qualcomm BSP",
+            "path": "meta-qcom"
+        },
+        {
+            "name": "Radxa BSP",
+            "path": "meta-radxa-bsp"
+        },
+        {
+            "name": "Qualcomm Distro",
+            "path": "meta-qcom-distro"
+        },
+        {
+            "name": "Qualcomm Releases (KAS locks)",
+            "path": "meta-qcom-releases"
+        },
+        {
+            "name": "AudioReach",
+            "path": "meta-audioreach"
+        },
+        {
+            "name": "Build Configuration",
+            "path": "build"
+        },
+        {
+            "name": "OpenEmbedded Layers",
+            "path": "meta-openembedded"
+        },
+        {
+            "name": "Security",
+            "path": "meta-security"
+        },
+        {
+            "name": "SELinux",
+            "path": "meta-selinux"
+        },
+        {
+            "name": "Updater (OTA)",
+            "path": "meta-updater"
+        },
+        {
+            "name": "Virtualization",
+            "path": "meta-virtualization"
+        },
+        {
+            "name": "OE-Core",
+            "path": "oe-core"
+        },
+        {
+            "name": "Bitbake",
+            "path": "bitbake"
+        }
+    ],
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+			{
+				"label": "KAS: Build Radxa Dragon Q6A",
+				"type": "shell",
+				"command": "kas build meta-radxa-bsp/ci/radxa-dragon-q6a-with-lock.yml:meta-radxa-bsp/ci/minimal-image.yml",
+				"options": {
+					"cwd": "${workspaceFolder:Root}"
+				},
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				},
+				"presentation": {
+					"reveal": "always",
+					"panel": "dedicated"
+				},
+				"problemMatcher": []
+			}
+		]
+    },
+    "settings": {
+        "files.exclude": {
+            "**/.git": true,
+            "**/build/tmp/work": true,
+            "**/build/tmp/sstate-control": true,
+            "**/build/tmp/stamps": true,
+            "**/build/tmp/hosttools": true,
+            "**/build/tmp/sysroots-components": true,
+            "**/build/tmp/pkgdata": true,
+            "**/build/cache": true,
+            "**/build/hashserve.sock": true,
+            "**/build/bitbake.sock": true,
+            "**/build/bitbake.lock": true,
+            "**/build/bitbake-cookerdaemon.log": true
+        },
+        "search.exclude": {
+            "**/.git": true,
+            "**/.repo": true,
+            "**/build/tmp/work/**": true,
+            "**/build/tmp/deploy/**": true,
+            "**/build/tmp/sstate-control/**": true,
+            "**/build/tmp/stamps/**": true,
+            "**/build/tmp/hosttools/**": true,
+            "**/build/tmp/sysroots-components/**": true,
+            "**/build/tmp/pkgdata/**": true,
+            "**/build/tmp/buildstats/**": true,
+            "**/build/tmp/cache/**": true,
+            "**/build/tmp/log/**": true,
+            "**/build/cache/**": true,
+            "**/build/buildhistory/**": true,
+            "**/*.log": true
+        },
+        "files.watcherExclude": {
+            "**/.git/objects/**": true,
+            "**/.git/subtree-cache/**": true,
+            "**/build/tmp/**": true,
+            "**/build/cache/**": true,
+            "**/build/buildhistory/**": true
+        },
+        "search.followSymlinks": false,
+        "search.useIgnoreFiles": true,
+        "git.ignoreLimitWarning": true,
+        "git.enabled": false,
+        "explorer.autoReveal": false,
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": false,
+        "workbench.tree.indent": 24,
+        "files.associations": {
+			"*.bb": "bitbake",
+			"*.bbappend": "bitbake",
+			"*.bbclass": "bitbake",
+			"*.inc": "bitbake",
+			"*.conf": "bitbake",
+			"*.kas.yml": "yaml",
+			"local.conf": "bitbake",
+			"bblayers.conf": "bitbake"
+		},
+        "python.autoComplete.extraPaths": [
+			"${workspaceFolder:=== Bitbake ===}/lib",
+			"${workspaceFolder:=== OE-Core ===}/meta/lib",
+			"${workspaceFolder}/sources/poky/bitbake/lib",
+			"${workspaceFolder}/sources/poky/meta/lib"
+		],
+        "python.analysis.extraPaths": [
+			"${workspaceFolder:=== Bitbake ===}/lib",
+			"${workspaceFolder:=== OE-Core ===}/meta/lib",
+			"${workspaceFolder}/sources/poky/bitbake/lib",
+			"${workspaceFolder}/sources/poky/meta/lib"
+		],
+        "[python]": {
+            "diffEditor.ignoreTrimWhitespace": false,
+            "editor.formatOnType": true,
+            "editor.wordBasedSuggestions": "off",
+            "files.trimTrailingWhitespace": false
+        },
+        "[shellscript]": {
+            "files.eol": "\n",
+            "files.trimTrailingWhitespace": false
+        }
+    }
+}
