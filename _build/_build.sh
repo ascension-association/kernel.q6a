@@ -9,3 +9,5 @@ cp ./build/tmp/deploy/images/radxa-dragon-q6a/Image ../vmlinuz
 
 rm -rf ./bitbake ./build ./oe-core
 find . -maxdepth 1 -type d -name 'meta-*' ! -name meta-radxa-bsp -exec rm -rf {} +
+
+echo "New vmlinuz kernel created successfully!"
