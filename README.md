@@ -51,6 +51,10 @@ And build a new kernel (takes about 10 minutes):
 The new kernel is stored in the working directory. Use `gok edit` to
 add the `"KernelPackage": "github.com/ascension-association/kernel.q6a",` entry above the `Hostname` line.
 
+## Limitations
+
+- No HDMI output (not required for my use case since the gokrazy web interface and SSH access via breakglass is sufficient for my needs)
+
 ## References & Thanks
 
 - [Navin Reddy tutorial](https://rootcommit.com/2026/board-bring-up-radxa-dragon-q6a-with-mainline-linux-and-yocto/)
