@@ -5,9 +5,15 @@ git clone -b wrynose https://github.com/qualcomm-linux/meta-qcom.git
 
 kas build meta-radxa-bsp/ci/radxa-dragon-q6a.yml --target virtual/kernel
 
-cp ./build/tmp/deploy/images/radxa-dragon-q6a/Image ../vmlinuz
+if [ -f ./build/tmp/deploy/images/radxa-dragon-q6a/Image ]; then
+  cp ./build/tmp/deploy/images/radxa-dragon-q6a/Image ../vmlinuz
+fi
 
 rm -rf ./bitbake ./build ./oe-core
 find . -maxdepth 1 -type d -name 'meta-*' ! -name meta-radxa-bsp -exec rm -rf {} +
 
-echo "New vmlinuz kernel created successfully!"
+if find ../vmlinuz -type f -newermt "today 00:00" -print -quit | grep -q .; then
+  echo "New vmlinuz kernel created successfully!"
+else
+  echo "Build error - see logs for more details."
+fi

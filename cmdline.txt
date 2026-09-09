@@ -1,1 +1,1 @@
-root=/dev/sda2 ro init=/gokrazy/init panic=10 oops=panic
+root=/dev/nvme0n1p2 ro init=/gokrazy/init rootwait=5 panic=10 oops=panic
