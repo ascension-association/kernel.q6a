@@ -16,3 +16,9 @@ repos:
     path: meta-qcom
   meta-radxa-bsp:
     path: meta-radxa-bsp
+local_conf_header:
+  parallelism: |
+    BB_PRESSURE_MAX_MEMORY = "15000"
+    PARALLEL_MAKE = "-j 4"
+    do_compile[number_threads] = "8"
+    do_configure[number_threads] = "8"
