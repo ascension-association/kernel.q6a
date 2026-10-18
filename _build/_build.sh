@@ -1,18 +1,19 @@
 #!/bin/bash
+set -euo pipefail
 
-git clone -b wrynose https://github.com/openembedded/meta-openembedded.git
-git clone -b wrynose https://github.com/qualcomm-linux/meta-qcom.git
+cd "$(dirname "$0")"
 
-kas build meta-radxa-bsp/ci/radxa-dragon-q6a.yml --target virtual/kernel
+for repo in openembedded/meta-openembedded qualcomm-linux/meta-qcom; do
+  dir=${repo#*/}
+  [ -d "$dir" ] || git clone --depth=1 -b wrynose "https://github.com/$repo.git"
+done
 
-if [ -f ./build/tmp/deploy/images/radxa-dragon-q6a/Image ]; then
+if kas build meta-radxa-bsp/ci/radxa-dragon-q6a.yml --target virtual/kernel; then
   cp ./build/tmp/deploy/images/radxa-dragon-q6a/Image ../vmlinuz
-fi
-
-if find ../vmlinuz -type f -newermt "today 00:00" -print -quit | grep -q .; then
   rm -rf ./bitbake ./build ./oe-core
   find . -maxdepth 1 -type d -name 'meta-*' ! -name meta-radxa-bsp -exec rm -rf {} +
   echo "New vmlinuz kernel created successfully!"
 else
-  echo "Build error - see logs for more details."
+  echo "Build error - see logs in _build/build/tmp/log for more details." >&2
+  exit 1
 fi
